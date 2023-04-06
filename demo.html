@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>cdn-project demo</title>
+<!-- Vue本体-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- comoponent -->
+<script src="./dist/cdn-project.umd.js"></script>
+<link rel="stylesheet" href="./dist/cdn-project.css" />
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <hello-world msg="こんちす" :hoge="{ fuga: 'オブジェクト渡せますね' }" />
+    </div>
+</body>
+<script>
+    Vue.component('hello-world', window['cdn-project'].HelloWorld);
+    new Vue({
+        use: [window['cdn-project'].HelloWorld],
+        el: '#app',
+        data: {
+            message: 'Hello Vue World!',
+        },
+    });
+</script>
